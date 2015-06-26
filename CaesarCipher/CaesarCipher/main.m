@@ -13,7 +13,9 @@
 
 - (NSString *)encode:(NSString *)string offset:(int)offset;
 - (NSString *)decode:(NSString *)string offset:(int)offset;
-- (BOOL) breakCode:(NSString *)stringOne  // created codebreaker method:
+
+// stated codebreaker method here:
+- (BOOL) breakCode:(NSString *)stringOne
  compareOneWithTwo:(NSString *)stringTwo;
 
 @end
@@ -58,7 +60,7 @@
     
     BOOL isEqualTo = NO;
     
-    for (int i = 0; i < 25; i++) {
+    for (int i = 1; i < 26; i++) {
         NSString *decodeCyphStringOne = [self decode:stringOne offset:i];
         for (int j = 1; j < 26; j++) {
             NSString *decodeCyphStringTwo = [self decode:stringTwo offset:j];
@@ -75,17 +77,18 @@ int main(int argc, const char * argv[]) {
         
         CaesarCipher *testStrings = [[CaesarCipher alloc]init];
         
-        // I print values to test the encode/decode methods
+        // I set words for the program to encode/decode:
         [testStrings encode:@"bananas" offset:3];
         [testStrings decode:@"edqdqdv" offset:3];
         
-        NSLog(@"%@", [testStrings encode:@"bananas" offset:3]);
-        NSLog(@"%@", [testStrings decode:@"edqdqdv" offset:3]);
+        // I printed values to show the encode/decode is working:
+        NSLog(@"%@ = the encoded word", [testStrings encode:@"bananas" offset:3]);
+        NSLog(@"%@ = the decoded word", [testStrings decode:@"edqdqdv" offset:3]);
         
-        // I can't get the below portion to work without crashing the system, that is why it is commented out. :(
+        // we can use the BOOL method to test the two words here:
+        BOOL isEqualTo = [testStrings breakCode:@"bananas" compareOneWithTwo:@"edqdqdv"];
+        NSLog(@"is codebreaker working? 1 = YES, 2 = NOPE: %d", isEqualTo);
         
-        //        BOOL isEqualTo = [testStrings breakCode:@"bananas" compareOneWithTwo:@"edqdqdv"];
-        //        NSLog(@"%c", isEqualTo);
     }
     return 0;
 }
