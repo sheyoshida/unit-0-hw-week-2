@@ -44,3 +44,5 @@ Write a program to simulate an election. Create a class called **VotingSimulator
 6. Ask the ElectionManager to ***displayResults***
 
 this is my added text... 
+
+me right now: 💆🏻
